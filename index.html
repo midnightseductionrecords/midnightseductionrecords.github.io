@@ -1,46 +1,516 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dakota Rayne</title>
-  <meta name="description" content="Official links for Dakota Rayne — music, videos, and releases." />
-  <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#0b0b10; color:#fff; }
-    .wrap { max-width:760px; margin:0 auto; padding:40px 20px; }
-    .card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:22px; }
-    h1 { margin:0 0 8px; font-size:38px; letter-spacing:0.5px; }
-    p { margin:0 0 18px; opacity:0.85; line-height:1.5; }
-    .btns { display:grid; gap:12px; margin-top:16px; }
-    a.btn {
-      display:block; text-decoration:none; color:#fff;
-      padding:14px 16px; border-radius:14px;
-      background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.14);
-    }
-    a.btn:hover { background:rgba(255,255,255,0.16); }
-    .small { margin-top:18px; font-size:13px; opacity:0.7; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midnight Seduction Records • Seduce the Night</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .neon-pink {
+            text-shadow: 
+                0 0 10px #f43f5e,
+                0 0 20px #f43f5e,
+                0 0 40px #ec4899,
+                0 0 80px #ec4899;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+        .release-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .release-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 30px 60px -15px rgb(244 63 94);
+        }
+        .neon-border {
+            box-shadow: 0 0 15px #f43f5e;
+        }
+        .vinyl-spin {
+            animation: spin-slow 25s linear infinite;
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #f43f5e;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Dakota Rayne</h1>
-      <p>Official links — stream, watch, and follow.</p>
+<body class="bg-zinc-950 text-zinc-200 overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-lg border-b border-zinc-800">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-rose-600 to-pink-600 rounded-2xl flex items-center justify-center text-white text-3xl font-black tracking-tighter heading">MSR</div>
+                <div class="leading-none">
+                    <span class="heading text-3xl font-bold tracking-[-2px] text-white">MIDNIGHT</span><br>
+                    <span class="heading text-3xl font-bold tracking-[-2px] text-rose-500 -mt-1 block">SEDUCTION</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-10 text-sm uppercase tracking-[1.5px] font-medium">
+                <a href="#releases" class="nav-link text-white hover:text-rose-400 transition-colors">Releases</a>
+                <a href="#artists" class="nav-link text-white hover:text-rose-400 transition-colors">Artists</a>
+                <a href="#events" class="nav-link text-white hover:text-rose-400 transition-colors">Live</a>
+                <a href="#shop" class="nav-link text-white hover:text-rose-400 transition-colors">Shop</a>
+            </div>
+            
+            <div class="flex items-center gap-x-6">
+                <a href="https://www.youtube.com/channel/UCJA2S6HMy6KT5d4AaTu3R3A" target="_blank" 
+                   class="hidden md:flex items-center gap-x-2 px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-rose-500/50 rounded-3xl text-xs tracking-widest font-medium transition-all hover:border-rose-500">
+                    <i class="fab fa-youtube"></i> WATCH NOW
+                </a>
+                <button onclick="openPlayer()" 
+                        class="px-7 py-3.5 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 rounded-3xl font-semibold flex items-center gap-x-3 text-sm transition-all active:scale-95">
+                    <i class="fas fa-play"></i>
+                    <span>PLAY LATEST</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-zinc-800 py-8">
+            <div class="flex flex-col items-center gap-y-8 text-xl font-medium">
+                <a href="#releases" onclick="toggleMobileMenu()" class="nav-link">Releases</a>
+                <a href="#artists" onclick="toggleMobileMenu()" class="nav-link">Artists</a>
+                <a href="#events" onclick="toggleMobileMenu()" class="nav-link">Live</a>
+                <a href="#shop" onclick="toggleMobileMenu()" class="nav-link">Shop</a>
+                <a href="https://www.youtube.com/channel/UCJA2S6HMy6KT5d4AaTu3R3A" target="_blank" class="text-rose-400">YouTube</a>
+            </div>
+        </div>
+    </nav>
 
-      <div class="btns">
-        <a class="btn" href="https://open.spotify.com/" target="_blank" rel="noreferrer">Spotify</a>
-        <a class="btn" href="https://music.apple.com/" target="_blank" rel="noreferrer">Apple Music</a>
-        <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube / VEVO</a>
-        <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-        <a class="btn" href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok</a>
-      </div>
+    <!-- HERO -->
+    <section class="hero-bg h-screen flex items-center relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-zinc-950"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-8 relative z-10 pt-20">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-x-3 px-6 py-2.5 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 mb-8">
+                    <div class="w-2.5 h-2.5 bg-rose-500 rounded-full animate-pulse"></div>
+                    <span class="uppercase text-xs tracking-[3px] font-semibold">Durham, England • Est. 2025</span>
+                </div>
+                
+                <h1 class="heading text-[92px] md:text-[120px] leading-none font-black tracking-[-6px] text-white neon-pink">
+                    MIDNIGHT<br>SEDUCTION
+                </h1>
+                <p class="text-3xl text-rose-300 mt-4 max-w-md leading-tight">
+                    Unfiltered beats for the fearless. Explicit anthems after dark.
+                </p>
+                
+                <div class="mt-12 flex flex-wrap gap-5">
+                    <a href="#releases" 
+                       class="group px-10 py-5 bg-white text-zinc-950 font-semibold rounded-3xl flex items-center gap-x-4 hover:bg-rose-500 hover:text-white transition-all text-lg">
+                        ENTER THE CATALOG
+                        <span class="text-2xl group-active:rotate-45 transition-transform">→</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=LV9do8RXEsY" target="_blank"
+                       class="px-10 py-5 border-2 border-white/70 hover:border-white rounded-3xl font-medium text-lg flex items-center gap-x-3 transition-all">
+                        <i class="fab fa-youtube"></i> LATEST DROP
+                    </a>
+                </div>
+                
+                <div class="mt-16 text-xs uppercase tracking-widest flex items-center gap-x-8 text-zinc-400">
+                    <div>18+ EXPLICIT CONTENT</div>
+                    <div class="h-px w-12 bg-zinc-700"></div>
+                    <div>NO TISSUE NO WIPE</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- floating vinyl -->
+        <div class="absolute bottom-12 right-12 hidden xl:block">
+            <div class="relative w-48 h-48">
+                <img src="https://picsum.photos/id/201/600/600" alt="Vinyl" 
+                     class="vinyl-spin w-full h-full rounded-full border-8 border-rose-500/30 shadow-2xl object-cover">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-zinc-950 rounded-full border-4 border-rose-500 flex items-center justify-center">
+                        <div class="w-4 h-4 bg-rose-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-y-1 text-xs tracking-widest opacity-60">
+            <span>SCROLL FOR SIN</span>
+            <i class="fas fa-chevron-down animate-bounce text-xl"></i>
+        </div>
+    </section>
 
-      <div class="small">
-        © Dakota Rayne — updated on GitHub Pages.
-      </div>
+    <!-- ABOUT -->
+    <section class="py-28 bg-zinc-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <div class="sticky top-28">
+                        <span class="px-5 py-2 bg-rose-950 text-rose-400 text-xs tracking-widest font-medium rounded-3xl">THE LABEL</span>
+                        <h2 class="heading text-7xl font-bold tracking-tighter mt-6 leading-none">
+                            We don't just play music.<br>We seduce the night.
+                        </h2>
+                        <div class="mt-10 w-24 h-px bg-gradient-to-r from-rose-500 to-transparent"></div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 text-xl leading-relaxed text-zinc-300 max-w-2xl">
+                    <p class="mb-8">
+                        Midnight Seduction Records is Durham's most dangerous new label. Home of Byron Silkwood and other boundary-shattering artists who deliver raw, hilarious, and completely unapologetic late-night anthems.
+                    </p>
+                    <p>
+                        No filters. No apologies. Just pure midnight chaos that will have you laughing, blushing, and hitting repeat.
+                    </p>
+                    <div class="mt-16 flex gap-12 text-sm">
+                        <div>
+                            <div class="text-5xl font-bold text-rose-400">6</div>
+                            <div class="uppercase tracking-widest mt-1">Singles dropped this week</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold text-rose-400">∞</div>
+                            <div class="uppercase tracking-widest mt-1">Ways to get in trouble</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELEASES -->
+    <section id="releases" class="py-28 bg-black">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-rose-500 text-sm font-medium tracking-widest">FRESH FROM THE SHADOWS</span>
+                    <h2 class="heading text-6xl font-bold tracking-tighter">Latest Releases</h2>
+                </div>
+                <a href="https://www.youtube.com/channel/UCJA2S6HMy6KT5d4AaTu3R3A" target="_blank"
+                   class="hidden md:flex items-center gap-x-3 text-sm hover:text-rose-400 transition-colors">
+                    ALL ON YOUTUBE <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Release 1 -->
+                <div class="release-card bg-zinc-900 rounded-3xl overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/237/800/800" alt="No Tissue No Wipe" class="w-full aspect-square object-cover">
+                        <div onclick="window.open('https://www.youtube.com/watch?v=lwQAmQRWZF4','_blank')" 
+                             class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all cursor-pointer">
+                            <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl text-black shadow-xl">
+                                <i class="fas fa-play ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="uppercase text-rose-400 text-xs tracking-widest mb-2">BYRON SILKWOOD • 2026</div>
+                        <h3 class="text-2xl font-semibold leading-tight">"No Tissue No Wipe"</h3>
+                        <p class="text-zinc-400 text-sm mt-3">The ultimate after-party anthem. Explicit as hell.</p>
+                    </div>
+                </div>
+                
+                <!-- Release 2 -->
+                <div class="release-card bg-zinc-900 rounded-3xl overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/866/800/800" alt="The Wrong Hole Again" class="w-full aspect-square object-cover">
+                        <div onclick="window.open('https://www.youtube.com/watch?v=LV9do8RXEsY','_blank')" 
+                             class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all cursor-pointer">
+                            <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl text-black shadow-xl">
+                                <i class="fas fa-play ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="uppercase text-rose-400 text-xs tracking-widest mb-2">BYRON SILKWOOD • 2026</div>
+                        <h3 class="text-2xl font-semibold leading-tight">"The Wrong Hole Again"</h3>
+                        <p class="text-zinc-400 text-sm mt-3">You know what you did.</p>
+                    </div>
+                </div>
+                
+                <!-- Release 3 -->
+                <div class="release-card bg-zinc-900 rounded-3xl overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/1016/800/800" alt="Crocodile Cock" class="w-full aspect-square object-cover">
+                        <div onclick="window.open('https://www.youtube.com/watch?v=Mt6UVNDwKSM','_blank')" 
+                             class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all cursor-pointer">
+                            <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl text-black shadow-xl">
+                                <i class="fas fa-play ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="uppercase text-rose-400 text-xs tracking-widest mb-2">BYRON SILKWOOD • 2026</div>
+                        <h3 class="text-2xl font-semibold leading-tight">"Crocodile Cock"</h3>
+                        <p class="text-zinc-400 text-sm mt-3">Snap into it.</p>
+                    </div>
+                </div>
+                
+                <!-- Release 4 -->
+                <div class="release-card bg-zinc-900 rounded-3xl overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/870/800/800" alt="Chocolate Starfish Serenade" class="w-full aspect-square object-cover">
+                        <div onclick="window.open('https://www.youtube.com/watch?v=tZpZWjayG8o','_blank')" 
+                             class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all cursor-pointer">
+                            <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl text-black shadow-xl">
+                                <i class="fas fa-play ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="uppercase text-rose-400 text-xs tracking-widest mb-2">BYRON SILKWOOD • 2026</div>
+                        <h3 class="text-2xl font-semibold leading-tight">"Chocolate Starfish Serenade"</h3>
+                        <p class="text-zinc-400 text-sm mt-3">Smooth... until it's not.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="https://www.youtube.com/channel/UCJA2S6HMy6KT5d4AaTu3R3A" target="_blank"
+                   class="inline-flex items-center gap-x-3 text-rose-400 hover:text-white text-sm uppercase tracking-widest font-medium">
+                    MORE ON YOUTUBE <span class="text-xl">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED ARTIST -->
+    <section id="artists" class="py-28">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <span class="text-sm uppercase tracking-widest text-rose-400">FLAG SHIP ARTIST</span>
+                <h2 class="heading text-6xl font-bold mt-3">BYRON SILKWOOD</h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <img src="https://picsum.photos/id/64/800/1000" alt="Byron Silkwood" 
+                         class="w-full rounded-3xl neon-border">
+                </div>
+                <div class="lg:col-span-7">
+                    <div class="max-w-xl">
+                        <p class="text-3xl leading-tight text-zinc-300">
+                            The undisputed king of crude, hilarious, and dangerously catchy midnight anthems. 
+                            One listen and you'll be hooked (and slightly traumatized).
+                        </p>
+                        <div class="mt-12 grid grid-cols-3 gap-8 text-center">
+                            <div>
+                                <div class="text-4xl font-bold text-rose-400">4.2M</div>
+                                <div class="text-xs tracking-widest uppercase mt-2">Streams this month</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-rose-400">∞</div>
+                                <div class="text-xs tracking-widest uppercase mt-2">Ways to offend your neighbors</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-rose-400">100%</div>
+                                <div class="text-xs tracking-widest uppercase mt-2">No regrets</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-16 flex gap-6">
+                            <a href="https://www.youtube.com/channel/UCJA2S6HMy6KT5d4AaTu3R3A" target="_blank" 
+                               class="flex-1 py-6 border border-zinc-700 hover:border-rose-500 rounded-3xl text-center font-medium transition-colors">
+                                YOUTUBE
+                            </a>
+                            <a href="#" 
+                               class="flex-1 py-6 border border-zinc-700 hover:border-rose-500 rounded-3xl text-center font-medium transition-colors">
+                                SPOTIFY
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE / EVENTS -->
+    <section id="events" class="py-28 bg-zinc-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="heading text-6xl font-bold tracking-tighter text-center mb-16">Catch the Seduction Live</h2>
+            <div class="max-w-2xl mx-auto text-center text-xl text-zinc-400">
+                <p class="mb-8">First shows coming soon. Durham underground venues only. Expect chaos, laughter, and zero chill.</p>
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-12">
+                    <div class="uppercase text-sm tracking-widest text-rose-400 mb-3">COMING 2026</div>
+                    <div class="text-4xl font-semibold">Midnight Mayhem Tour</div>
+                    <div class="mt-6 text-rose-300">Tickets drop when the moon is right.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP TEASER -->
+    <section id="shop" class="py-28">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="flex-1">
+                    <h2 class="heading text-6xl font-bold tracking-tighter">Merch that hits different.</h2>
+                    <p class="mt-6 text-lg text-zinc-400 max-w-md">
+                        Hoodies that say what you can't. Stickers for your laptop (and your ex's car).
+                    </p>
+                    <a href="#" class="mt-10 inline-block px-10 py-5 border-2 border-white rounded-3xl hover:bg-white hover:text-zinc-950 font-semibold transition-all">
+                        SHOP THE COLLECTION →
+                    </a>
+                </div>
+                <div class="flex-1 grid grid-cols-2 gap-6">
+                    <img src="https://picsum.photos/id/201/600/600" class="rounded-3xl" alt="Merch">
+                    <img src="https://picsum.photos/id/870/600/600" class="rounded-3xl mt-12" alt="Merch">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="py-28 border-t border-zinc-800 bg-black">
+        <div class="max-w-lg mx-auto text-center px-6">
+            <h2 class="heading text-5xl font-bold">Join the inner circle</h2>
+            <p class="mt-6 text-zinc-400">Early access to drops, secret mixes, tour presales, and the occasional unhinged voice note from Byron.</p>
+            
+            <form class="mt-10 flex" onsubmit="subscribe(event)">
+                <input id="email" type="email" placeholder="your@email.com" 
+                       class="flex-1 bg-zinc-900 border border-r-0 border-zinc-700 focus:border-rose-500 rounded-l-3xl px-7 py-6 outline-none text-lg">
+                <button type="submit"
+                        class="bg-gradient-to-r from-rose-600 to-pink-600 px-10 rounded-r-3xl font-semibold hover:brightness-110 transition-all">
+                    SUBSCRIBE
+                </button>
+            </form>
+            <p class="text-xs text-zinc-500 mt-6">We hate spam more than you do. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-950 py-20 border-t border-zinc-800">
+        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-y-12">
+            <div class="md:col-span-5">
+                <div class="flex items-center gap-x-3 mb-8">
+                    <div class="w-10 h-10 bg-gradient-to-br from-rose-600 to-pink-600 rounded-2xl flex items-center justify-center text-white text-3xl font-black heading">MSR</div>
+                    <span class="heading text-3xl font-bold tracking-tighter">MIDNIGHT SEDUCTION RECORDS</span>
+                </div>
+                <p class="text-zinc-400 max-w-xs">Durham's home for the filthiest, funniest, most seductive beats on the planet.</p>
+                <div class="flex gap-x-6 mt-10 text-2xl">
+                    <a href="#" class="hover:text-rose-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCJA2S6HMy6KT5d4AaTu3R3A" target="_blank" class="hover:text-rose-400 transition-colors"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="hover:text-rose-400 transition-colors"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-2">
+                <div class="uppercase text-xs tracking-widest mb-6 text-zinc-500">Navigate</div>
+                <div class="space-y-4 text-sm">
+                    <a href="#releases" class="block hover:text-rose-400">Releases</a>
+                    <a href="#artists" class="block hover:text-rose-400">Artists</a>
+                    <a href="#events" class="block hover:text-rose-400">Live Shows</a>
+                    <a href="#shop" class="block hover:text-rose-400">Merch</a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-3">
+                <div class="uppercase text-xs tracking-widest mb-6 text-zinc-500">Legal &amp; Adult</div>
+                <div class="text-xs text-zinc-400 leading-relaxed">
+                    This site contains explicit content. 18+ only.<br><br>
+                    © 2026 Midnight Seduction Records. All rights reserved.<br>
+                    Made with love (and questionable humor) in Durham, England.
+                </div>
+            </div>
+            
+            <div class="md:col-span-2 text-right">
+                <div onclick="window.scrollTo({top:0,behavior:'smooth'})" 
+                     class="cursor-pointer inline-flex flex-col items-end group">
+                    <span class="text-xs tracking-widest opacity-60 group-hover:opacity-100">BACK TO TOP</span>
+                    <i class="fas fa-arrow-up text-4xl mt-2 group-active:-translate-y-1 transition-transform"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MUSIC PLAYER MODAL -->
+    <div id="player-modal" class="hidden fixed inset-0 bg-black/90 z-[999] flex items-end md:items-center justify-center">
+        <div class="bg-zinc-900 w-full max-w-2xl md:rounded-3xl p-8 md:p-12 relative">
+            <button onclick="closePlayer()" class="absolute top-6 right-6 text-3xl hover:text-rose-400">×</button>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-52 h-52 md:w-64 md:h-64 bg-zinc-800 rounded-3xl overflow-hidden flex-shrink-0">
+                    <img id="modal-art" src="https://picsum.photos/id/237/600/600" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <div id="modal-title" class="text-3xl font-semibold">No Tissue No Wipe</div>
+                    <div id="modal-artist" class="text-rose-400 mt-2">Byron Silkwood</div>
+                    
+                    <div class="mt-12 flex justify-center md:justify-start gap-8 text-4xl">
+                        <button onclick="window.open('https://www.youtube.com/watch?v=lwQAmQRWZF4','_blank')" class="hover:scale-110 transition-transform">
+                            <i class="fab fa-youtube"></i>
+                        </button>
+                        <button class="hover:scale-110 transition-transform">
+                            <i class="fab fa-spotify"></i>
+                        </button>
+                    </div>
+                    
+                    <p class="text-xs mt-20 opacity-50">Click the icons above to listen on your favorite platform. Or just scream the lyrics into the void.</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden')
+        }
+        
+        function openPlayer() {
+            document.getElementById('player-modal').classList.remove('hidden')
+            document.getElementById('modal-title').textContent = 'No Tissue No Wipe'
+            document.getElementById('modal-artist').textContent = 'Byron Silkwood'
+            document.getElementById('modal-art').src = 'https://picsum.photos/id/237/600/600'
+        }
+        
+        function closePlayer() {
+            document.getElementById('player-modal').classList.add('hidden')
+        }
+        
+        function subscribe(e) {
+            e.preventDefault()
+            const email = document.getElementById('email').value
+            if (email) {
+                alert("✅ You're in. Welcome to the dark side, " + email.split('@')[0] + ".")
+                document.getElementById('email').value = ''
+            }
+        }
+        
+        // Tailwind script already loaded
+        console.log('%cWelcome to Midnight Seduction Records 🌑\nCopy this file, host it, and own the night.', 'color:#f43f5e; font-family:monospace')
+        
+        // Keyboard escape for modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const modal = document.getElementById('player-modal')
+                if (!modal.classList.contains('hidden')) closePlayer()
+            }
+        })
+    </script>
 </body>
 </html>
-
